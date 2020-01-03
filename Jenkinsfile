@@ -5,8 +5,8 @@ pipeline {
     }
     environment{
       dockerImage = ''
-      registry = 'piotrzalecki/simple-app'
-      registryCredentials = 'dockerhub'
+      registry = 'eu.gcr.io/k8s-training-260111/simple-app'
+      registryCredentials = 'k8s-training'
     }
 
     stages{
@@ -37,3 +37,5 @@ pipeline {
 
     }
 }
+
+// image-registry-jenkins@k8s-training-260111.iam.gserviceaccount.com
