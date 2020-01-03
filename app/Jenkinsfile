@@ -1,12 +1,9 @@
 pipeline {
     agent any
-    parameters{
-      string(name: 'IMAGE_VERSION', defaultValue: 'v1.0', description: 'Image version?')
-    }
     environment{
       dockerImage = ''
       registry = 'eu.gcr.io/k8s-training-260111/simple-app'
-      registryCredentials = 'k8s-training'
+      registryCredentials = 'gcr:container-registry-credentials'
     }
 
     stages{
@@ -25,7 +22,7 @@ pipeline {
         stage('Deploy Image'){
           steps{
             script{
-              docker.withRegistry('', registryCredentials){dockerImage.push()}
+              docker.withRegistry('https://eu.gcr.io', registryCredentials){dockerImage.push()}
             }
           }
         }
